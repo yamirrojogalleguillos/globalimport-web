@@ -7,9 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
@@ -17,24 +15,15 @@ concurrency:
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: descargar repositorio
         uses: actions/checkout@v4
 
-      - name: configurar github pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      - name: preparar archivos del sitio
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
       - name: publicar
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: .
+          exclude_assets: '.git,.github'

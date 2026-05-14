@@ -92,7 +92,10 @@ function isAdult(dateValue) {
 }
 
 function validateRut(value) {
-  const cleanValue = value.replace(/\./g, '').replace('-', '').trim().toUpperCase();
+  const cleanValue = value
+    .trim()
+    .toUpperCase()
+    .replace(/[.\s\-‐‑‒–—]/g, '');
 
   if (!/^\d{7,8}[\dK]$/.test(cleanValue)) {
     return false;
