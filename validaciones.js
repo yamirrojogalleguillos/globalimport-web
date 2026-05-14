@@ -6,6 +6,8 @@ const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const header = document.querySelector('.site-header');
 const revealItems = document.querySelectorAll('[data-reveal]');
+const themeButton = document.querySelector('.theme-toggle');
+const themeIcon = document.querySelector('.theme-toggle-icon');
 
 const fields = {
   nombre: document.getElementById('nombre'),
@@ -33,6 +35,14 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[+\-\s\d]+$/;
 const postalRegex = /^[a-zA-Z0-9]{4,10}$/;
 const passwordStrength = document.querySelector('.password-strength');
+
+function setTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem('globalimport-theme', theme);
+  themeIcon.textContent = theme === 'dark' ? 'LUNA' : 'SOL';
+}
+
+setTheme(localStorage.getItem('globalimport-theme') || 'light');
 
 function showError(fieldName, message) {
   const field = fields[fieldName];
@@ -411,6 +421,11 @@ form.addEventListener('submit', (event) => {
 menuButton.addEventListener('click', () => {
   const isOpen = navLinks.classList.toggle('is-open');
   menuButton.setAttribute('aria-expanded', String(isOpen));
+});
+
+themeButton.addEventListener('click', () => {
+  const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  setTheme(nextTheme);
 });
 
 window.addEventListener('scroll', () => {

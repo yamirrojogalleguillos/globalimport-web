@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GlobalImport S.A. | Comercio internacional</title>
+  <title>GlobalImport Neon Trade | GlobalImport S.A.</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,6 +18,9 @@
         <span></span>
         <span></span>
       </button>
+      <button class="theme-toggle" type="button" aria-label="Cambiar modo claro u oscuro">
+        <span class="theme-toggle-icon">SOL</span>
+      </button>
       <ul class="nav-links">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
@@ -31,7 +34,7 @@
     <section class="hero" id="inicio" data-reveal>
       <div class="hero-overlay">
         <p class="eyebrow">Importacion y distribucion para empresas</p>
-        <h1>GlobalImport S.A.</h1>
+        <h1 class="vapor-title">GlobalImport Neon Trade</h1>
         <p>Conectamos tu negocio con productos internacionales, gestion logistica y abastecimiento confiable.</p>
         <div class="hero-actions">
           <a class="button primary" href="#servicios">Conocer servicios</a>
@@ -132,10 +135,25 @@
     const header = document.querySelector('.site-header');
     const revealItems = document.querySelectorAll('[data-reveal]');
     const cards = document.querySelectorAll('.interactive-card');
+    const themeButton = document.querySelector('.theme-toggle');
+    const themeIcon = document.querySelector('.theme-toggle-icon');
+
+    function setTheme(theme) {
+      document.documentElement.dataset.theme = theme;
+      localStorage.setItem('globalimport-theme', theme);
+      themeIcon.textContent = theme === 'dark' ? 'LUNA' : 'SOL';
+    }
+
+    setTheme(localStorage.getItem('globalimport-theme') || 'light');
 
     menuButton.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('is-open');
       menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    themeButton.addEventListener('click', () => {
+      const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      setTheme(nextTheme);
     });
 
     window.addEventListener('scroll', () => {
