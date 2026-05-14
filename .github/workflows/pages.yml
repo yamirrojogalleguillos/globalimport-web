@@ -1,0 +1,38 @@
+name: publicar sitio en github pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: configurar github pages
+        uses: actions/configure-pages@v5
+
+      - name: preparar archivos del sitio
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: publicar
+        id: deployment
+        uses: actions/deploy-pages@v4
