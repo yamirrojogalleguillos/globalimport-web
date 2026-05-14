@@ -1,0 +1,13 @@
+necesito hacer un sitio web para una empresa ficticia llamada globalimport s.a., que se dedique a importar y distribuir productos como electronica, ropa y articulos para el hogar. la idea es que el sitio se vea serio, profesional y que ayude a que posibles clientes puedan contactarse facilmente.
+
+primero quiero armar la base del proyecto con un index.html y un css, siguiendo la estructura que pide el trabajo. la pagina principal tiene que tener una barra de navegacion, una seccion principal tipo hero, servicios, una parte de por que elegirnos y un footer con datos de contacto.
+
+tambien necesito que la seccion de servicios sea clara, porque es una de las partes mas importantes de la primera etapa. deberia tener tarjetas para importacion de electronica, indumentaria, articulos del hogar y logistica o distribucion.
+
+despues quiero agregar una pagina de registro para usuarios, con un formulario completo. tiene que estar separado en secciones: datos personales, contacto y acceso, direccion de entrega, preferencias y terminos. cada campo debe tener su label y verse ordenado en desktop y mobile.
+
+para la tercera etapa necesito agregar validaciones con javascript, sin usar librerias externas. el formulario tiene que revisar nombre, fecha de nacimiento, rut, email, contrasena, telefono, direccion, categorias, tipo de cliente y aceptacion de terminos.
+
+tambien quiero que el formulario muestre errores debajo de cada campo, que marque los campos con borde rojo si estan mal y con verde si estan bien. si todo esta correcto, no tiene que enviar nada a un servidor, solo mostrar un mensaje de exito con el nombre de la persona.
+
+por ultimo, necesito que el proyecto quede subido a github con commits ordenados por etapa, usando mensajes como etapa1, etapa2 y etapa3, para que se note el avance del trabajo practico.
