@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GlobalImport Neon Trade | GlobalImport S.A.</title>
+  <title>GlobalImport S.A. | Comercio internacional</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
         <span></span>
       </button>
       <button class="theme-toggle" type="button" aria-label="Cambiar modo claro u oscuro">
-        <span class="theme-toggle-icon">SOL</span>
+        <span class="theme-toggle-icon">Claro</span>
       </button>
       <ul class="nav-links">
         <li><a href="#inicio">Inicio</a></li>
@@ -33,8 +33,8 @@
   <main>
     <section class="hero" id="inicio" data-reveal>
       <div class="hero-overlay">
-        <p class="eyebrow">Importacion y distribucion para empresas</p>
-        <h1 class="vapor-title">GlobalImport Neon Trade</h1>
+        <p class="hero-kicker">Importacion y distribucion para empresas</p>
+        <h1 class="brand-title">GlobalImport S.A.</h1>
         <p>Conectamos tu negocio con productos internacionales, gestion logistica y abastecimiento confiable.</p>
         <div class="hero-actions">
           <a class="button primary" href="#servicios">Conocer servicios</a>
@@ -141,7 +141,7 @@
     function setTheme(theme) {
       document.documentElement.dataset.theme = theme;
       localStorage.setItem('globalimport-theme', theme);
-      themeIcon.textContent = theme === 'dark' ? 'LUNA' : 'SOL';
+      themeIcon.textContent = theme === 'dark' ? 'Oscuro' : 'Claro';
     }
 
     setTheme(localStorage.getItem('globalimport-theme') || 'light');

@@ -12,9 +12,9 @@
   height: 330px;
   content: "";
   background:
-    linear-gradient(135deg, rgba(17, 199, 234, 0.22), rgba(122, 201, 67, 0.14)),
+    linear-gradient(135deg, rgba(31, 111, 104, 0.18), rgba(31, 45, 47, 0.08)),
     url("assets/images/import-banner.svg") center / cover no-repeat;
-  opacity: 0.34;
+  opacity: 0.28;
 }
 
 .register-intro {
@@ -50,7 +50,7 @@
   margin: 0;
   padding: 26px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(237, 251, 255, 0.88));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 243, 0.88));
   border: 1px solid var(--color-line);
   border-radius: 8px;
   box-shadow: var(--shadow-card);
@@ -69,13 +69,13 @@
 
 .form-section:hover {
   transform: translateY(-3px);
-  border-color: rgba(0, 156, 196, 0.55);
-  box-shadow: 0 24px 48px rgba(0, 119, 164, 0.18);
+  border-color: rgba(31, 111, 104, 0.42);
+  box-shadow: 0 24px 48px rgba(34, 55, 56, 0.16);
 }
 
 .form-section:nth-child(even) {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(229, 249, 255, 0.92));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(237, 245, 242, 0.92));
 }
 
 :root[data-theme="dark"] .form-section,
@@ -122,7 +122,7 @@ label,
 label span,
 .choices-block span,
 .legal-list span {
-  color: #b42318;
+  color: var(--color-error);
 }
 
 input,
@@ -154,23 +154,23 @@ textarea:focus {
   outline: 3px solid rgba(15, 118, 110, 0.18);
   border-color: var(--color-primary);
   background: var(--input-bg);
-  box-shadow: 0 0 0 4px rgba(0, 156, 196, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 4px rgba(31, 111, 104, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .campo-error {
-  border-color: #d92d20;
+  border-color: var(--color-error-border);
   box-shadow: 0 0 0 3px rgba(217, 45, 32, 0.15);
 }
 
 .campo-ok {
-  border-color: #16803c;
+  border-color: var(--color-ok);
   box-shadow: 0 0 0 3px rgba(22, 128, 60, 0.12);
 }
 
 .error-message {
   min-height: 20px;
   margin: 0;
-  color: #b42318;
+  color: var(--color-error);
   font-size: 0.9rem;
   font-weight: 700;
 }

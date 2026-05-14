@@ -39,7 +39,7 @@ const passwordStrength = document.querySelector('.password-strength');
 function setTheme(theme) {
   document.documentElement.dataset.theme = theme;
   localStorage.setItem('globalimport-theme', theme);
-  themeIcon.textContent = theme === 'dark' ? 'LUNA' : 'SOL';
+  themeIcon.textContent = theme === 'dark' ? 'Oscuro' : 'Claro';
 }
 
 setTheme(localStorage.getItem('globalimport-theme') || 'light');
