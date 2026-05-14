@@ -167,18 +167,23 @@ textarea:focus {
   height: 7px;
   background: var(--color-line);
   border-radius: 999px;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.password-strength span:first-child {
+.password-strength.strength-1 span:first-child {
   background: #d92d20;
+  transform: scaleY(1.2);
 }
 
-.password-strength span:nth-child(2) {
+.password-strength.strength-2 span:first-child,
+.password-strength.strength-2 span:nth-child(2) {
   background: #c9872b;
+  transform: scaleY(1.2);
 }
 
-.password-strength span:nth-child(3) {
+.password-strength.strength-3 span {
   background: #16803c;
+  transform: scaleY(1.2);
 }
 
 .form-actions {

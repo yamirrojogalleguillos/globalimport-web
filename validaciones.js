@@ -28,9 +28,9 @@ const fields = {
 
 const lettersRegex = /^[a-zA-Z\s]+$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
 const phoneRegex = /^[+\-\s\d]+$/;
 const postalRegex = /^[a-zA-Z0-9]{4,10}$/;
+const passwordStrength = document.querySelector('.password-strength');
 
 function showError(fieldName, message) {
   const field = fields[fieldName];
@@ -117,6 +117,27 @@ function validateRut(value) {
   return verifier === expected;
 }
 
+function getPasswordChecks(value) {
+  return {
+    hasLength: value.length >= 8,
+    hasUppercase: /[A-Z]/.test(value),
+    hasNumber: /\d/.test(value),
+    hasSpecial: /[^A-Za-z0-9]/.test(value)
+  };
+}
+
+function updatePasswordStrength() {
+  const checks = getPasswordChecks(fields.password.value);
+  const score = Object.values(checks).filter(Boolean).length;
+  const strengthLevel = score >= 4 ? 3 : score >= 3 ? 2 : score >= 1 ? 1 : 0;
+
+  passwordStrength.classList.remove('strength-1', 'strength-2', 'strength-3');
+
+  if (strengthLevel > 0) {
+    passwordStrength.classList.add(`strength-${strengthLevel}`);
+  }
+}
+
 function validateTextField(fieldName, min, max, label) {
   const value = fields[fieldName].value.trim();
 
@@ -198,13 +219,23 @@ function validateField(fieldName) {
       clearError('confirmarEmail');
       return true;
     case 'password':
-      if (!passwordRegex.test(fields.password.value)) {
-        showError('password', 'La contrasena debe tener 8 caracteres, una mayuscula, un numero y un caracter especial.');
+      if (!fields.password.value) {
+        showError('password', 'La contrasena no puede quedar vacia.');
+        return false;
+      }
+
+      if (!Object.values(getPasswordChecks(fields.password.value)).every(Boolean)) {
+        showError('password', 'La contrasena debe tener minimo 8 caracteres, una mayuscula, un numero y un simbolo.');
         return false;
       }
       clearError('password');
       return true;
     case 'confirmarPassword':
+      if (!fields.confirmarPassword.value) {
+        showError('confirmarPassword', 'Confirma tu contrasena.');
+        return false;
+      }
+
       if (fields.confirmarPassword.value !== fields.password.value) {
         showError('confirmarPassword', 'La confirmacion debe coincidir con la contrasena.');
         return false;
@@ -318,8 +349,16 @@ Object.keys(fields).forEach((fieldName) => {
 
   field.addEventListener('blur', () => validateField(fieldName));
   field.addEventListener('input', () => {
+    if (fieldName === 'password') {
+      updatePasswordStrength();
+    }
+
     if (field.classList.contains('campo-error')) {
       validateField(fieldName);
+    }
+
+    if (fieldName === 'password' && fields.confirmarPassword.value) {
+      validateField('confirmarPassword');
     }
   });
   field.addEventListener('change', () => validateField(fieldName));
@@ -349,6 +388,7 @@ form.addEventListener('reset', () => {
     clearGroupError('categorias');
     clearGroupError('tipoCliente');
     contadorReferencia.textContent = '0';
+    passwordStrength.classList.remove('strength-1', 'strength-2', 'strength-3');
   }, 0);
 });
 
