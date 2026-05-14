@@ -1,13 +1,14 @@
 :root {
-  --color-ink: #17202a;
-  --color-muted: #5c6673;
-  --color-primary: #0f766e;
-  --color-primary-dark: #0b5751;
-  --color-accent: #c9872b;
-  --color-bg: #f4f8fa;
+  --color-ink: #133344;
+  --color-muted: #56717f;
+  --color-primary: #009cc4;
+  --color-primary-dark: #087a9a;
+  --color-accent: #7ac943;
+  --color-bg: #eefaff;
   --color-card: #ffffff;
-  --color-line: #dbe3ea;
-  --shadow-card: 0 16px 35px rgba(19, 32, 44, 0.13);
+  --color-line: rgba(119, 196, 220, 0.48);
+  --glass: rgba(255, 255, 255, 0.74);
+  --shadow-card: 0 18px 38px rgba(0, 83, 122, 0.16);
 }
 
 * {
@@ -21,7 +22,8 @@ html {
 body {
   margin: 0;
   color: var(--color-ink);
-  background: #ffffff;
+  background:
+    linear-gradient(180deg, #f7fdff 0%, #eaf9ff 42%, #ffffff 100%);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
 }
@@ -42,9 +44,16 @@ a {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(244, 252, 255, 0.72);
   border-bottom: 1px solid var(--color-line);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 28px rgba(20, 111, 145, 0.08);
+  backdrop-filter: blur(18px) saturate(1.35);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 28px rgba(20, 111, 145, 0.14);
 }
 
 .navbar {
@@ -69,8 +78,11 @@ a {
   width: 42px;
   height: 42px;
   color: #ffffff;
-  background: var(--color-primary);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.38), transparent 48%),
+    linear-gradient(135deg, #17c7e8, #087a9a 62%, #7ac943);
   border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 8px 18px rgba(0, 156, 196, 0.28);
   font-size: 0.9rem;
 }
 
@@ -92,8 +104,11 @@ a {
 .nav-register {
   padding: 10px 14px;
   color: #ffffff;
-  background: var(--color-primary);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.38), transparent 52%),
+    linear-gradient(135deg, #11b9e0, #087a9a);
   border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 156, 196, 0.2);
 }
 
 .nav-register:hover {
@@ -120,6 +135,8 @@ a {
 }
 
 .hero {
+  position: relative;
+  overflow: hidden;
   display: grid;
   align-items: center;
   width: 100%;
@@ -127,12 +144,45 @@ a {
   padding: 88px max(16px, calc((100% - 1120px) / 2));
   color: #ffffff;
   background:
-    linear-gradient(90deg, rgba(12, 25, 33, 0.88), rgba(12, 25, 33, 0.48)),
+    linear-gradient(90deg, rgba(5, 42, 65, 0.88), rgba(6, 119, 153, 0.35)),
     url("assets/images/import-banner.svg") center / cover no-repeat;
 }
 
+.hero::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.5) 0 8%, transparent 8% 22%, rgba(255, 255, 255, 0.18) 22% 30%, transparent 30%),
+    linear-gradient(180deg, transparent 0%, rgba(0, 156, 196, 0.28) 100%);
+  pointer-events: none;
+}
+
+.hero::after {
+  position: absolute;
+  right: 8%;
+  bottom: 8%;
+  width: min(430px, 42vw);
+  height: min(280px, 28vw);
+  content: "";
+  background: url("assets/images/import-banner.svg") center / cover no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-radius: 8px;
+  box-shadow: inset 0 18px 38px rgba(255, 255, 255, 0.48), inset 0 -24px 42px rgba(0, 81, 112, 0.28), 0 28px 70px rgba(0, 40, 65, 0.28);
+  opacity: 0.48;
+  pointer-events: none;
+}
+
 .hero-overlay {
+  position: relative;
+  z-index: 1;
   max-width: 710px;
+  padding: 34px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58), 0 22px 60px rgba(0, 37, 64, 0.22);
+  backdrop-filter: blur(14px) saturate(1.35);
 }
 
 .hero h1 {
@@ -144,6 +194,30 @@ a {
   max-width: 620px;
   margin: 18px 0 30px;
   font-size: 1.2rem;
+}
+
+.hero-actions,
+.hero-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-status {
+  margin-top: 24px;
+}
+
+.hero-status span {
+  padding: 10px 12px;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.hero-status strong {
+  color: #b8ff7a;
 }
 
 .eyebrow {
@@ -165,11 +239,20 @@ a {
   border-radius: 8px;
   font-weight: 800;
   cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 12px 22px rgba(0, 110, 150, 0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 16px 28px rgba(0, 110, 150, 0.22);
 }
 
 .button.primary {
   color: #ffffff;
-  background: var(--color-primary);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), transparent 52%),
+    linear-gradient(135deg, #0fc4ed, #087a9a);
 }
 
 .button.primary:hover {
@@ -178,8 +261,14 @@ a {
 
 .button.secondary {
   color: var(--color-primary);
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.82);
   border-color: var(--color-line);
+}
+
+.button.glass {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.34);
 }
 
 .section {
@@ -210,27 +299,53 @@ a {
 }
 
 .service-card {
+  position: relative;
+  overflow: hidden;
   min-height: 275px;
   padding: 28px;
-  background: var(--color-card);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(232, 250, 255, 0.84)),
+    var(--color-card);
   border: 1px solid var(--color-line);
   border-radius: 8px;
   box-shadow: var(--shadow-card);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.service-card::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 25%), rgba(255, 255, 255, 0.92), transparent 28%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
 }
 
 .service-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 22px 44px rgba(19, 32, 44, 0.18);
+  border-color: rgba(0, 156, 196, 0.55);
+  box-shadow: 0 24px 52px rgba(0, 119, 164, 0.24);
+}
+
+.service-card:hover::before {
+  opacity: 0.42;
 }
 
 .service-icon {
+  display: grid;
+  place-items: center;
   width: 58px;
   height: 58px;
   margin-bottom: 20px;
-  object-fit: cover;
+  color: #ffffff;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.46), transparent 52%),
+    linear-gradient(135deg, #11c7ea, #087a9a 70%, #7ac943);
   border-radius: 8px;
-  border: 2px solid var(--color-primary);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 10px 22px rgba(0, 156, 196, 0.24);
+  font-weight: 900;
 }
 
 .service-card h3 {
@@ -247,7 +362,9 @@ a {
   width: 100%;
   padding-right: max(16px, calc((100% - 1120px) / 2));
   padding-left: max(16px, calc((100% - 1120px) / 2));
-  background: var(--color-bg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.46), rgba(238, 250, 255, 0.95)),
+    var(--color-bg);
 }
 
 .benefits-grid {
@@ -258,9 +375,17 @@ a {
 
 .benefits-grid div {
   padding: 24px;
-  background: #ffffff;
-  border-left: 5px solid var(--color-primary);
+  background: var(--glass);
+  border: 1px solid var(--color-line);
+  border-top: 4px solid rgba(122, 201, 67, 0.72);
   border-radius: 8px;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s ease;
+}
+
+.benefits-grid div:hover {
+  transform: translateY(-4px);
 }
 
 .benefits-grid strong {
@@ -281,9 +406,11 @@ a {
   gap: 12px;
   max-width: 640px;
   padding: 26px;
-  background: var(--color-bg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(233, 251, 255, 0.86));
   border: 1px solid var(--color-line);
   border-radius: 8px;
+  box-shadow: var(--shadow-card);
 }
 
 .contact-box p {
@@ -302,7 +429,9 @@ a {
   gap: 24px;
   padding: 30px max(16px, calc((100% - 1120px) / 2));
   color: #ffffff;
-  background: var(--color-ink);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent),
+    linear-gradient(135deg, #103344, #087a9a);
 }
 
 .site-footer p {
@@ -317,6 +446,17 @@ a {
 
 .social-links a:hover {
   color: var(--color-accent);
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 760px) {
@@ -373,6 +513,10 @@ a {
 
   .hero {
     min-height: 620px;
+  }
+
+  .hero-overlay {
+    padding: 24px;
   }
 
   .button {

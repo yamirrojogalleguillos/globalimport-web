@@ -28,46 +28,54 @@
   </header>
 
   <main>
-    <section class="hero" id="inicio">
+    <section class="hero" id="inicio" data-reveal>
       <div class="hero-overlay">
         <p class="eyebrow">Importacion y distribucion para empresas</p>
         <h1>GlobalImport S.A.</h1>
         <p>Conectamos tu negocio con productos internacionales, gestion logistica y abastecimiento confiable.</p>
-        <a class="button primary" href="#servicios">Conocer servicios</a>
+        <div class="hero-actions">
+          <a class="button primary" href="#servicios">Conocer servicios</a>
+          <a class="button glass" href="registro.html">Crear cuenta</a>
+        </div>
+        <div class="hero-status" aria-label="Indicadores comerciales">
+          <span><strong>24/48h</strong> gestion de pedidos</span>
+          <span><strong>+120</strong> clientes activos</span>
+          <span><strong>3</strong> categorias clave</span>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="servicios">
+    <section class="section" id="servicios" data-reveal>
       <div class="section-heading">
         <p class="eyebrow">Servicios</p>
         <h2>Soluciones de importacion para distintos rubros</h2>
         <p>Trabajamos con categorias clave para comercios, revendedores y empresas que buscan variedad, cumplimiento y respaldo.</p>
       </div>
       <div class="services-grid">
-        <article class="service-card">
-          <img src="assets/images/import-banner.svg" alt="" class="service-icon">
+        <article class="service-card interactive-card">
+          <span class="service-icon">EL</span>
           <h3>Importacion de Electronica</h3>
           <p>Gestionamos productos tecnologicos, accesorios y dispositivos para abastecer tiendas y empresas. Priorizamos proveedores confiables y disponibilidad comercial.</p>
         </article>
-        <article class="service-card">
-          <img src="assets/images/import-banner.svg" alt="" class="service-icon">
+        <article class="service-card interactive-card">
+          <span class="service-icon">IN</span>
           <h3>Indumentaria y Accesorios</h3>
           <p>Ofrecemos soluciones para negocios de moda, temporada y venta online. El catalogo se adapta a tendencias y necesidades de reposicion.</p>
         </article>
-        <article class="service-card">
-          <img src="assets/images/import-banner.svg" alt="" class="service-icon">
+        <article class="service-card interactive-card">
+          <span class="service-icon">HG</span>
           <h3>Articulos del Hogar</h3>
           <p>Importamos productos funcionales para hogar, bazar y consumo cotidiano. Son opciones pensadas para ampliar el surtido de comercios minoristas.</p>
         </article>
-        <article class="service-card">
-          <img src="assets/images/import-banner.svg" alt="" class="service-icon">
+        <article class="service-card interactive-card">
+          <span class="service-icon">LD</span>
           <h3>Logistica y Distribucion</h3>
           <p>Coordinamos entregas, seguimiento de pedidos y distribucion mayorista. Nuestro objetivo es simplificar la operacion comercial del cliente.</p>
         </article>
       </div>
     </section>
 
-    <section class="section highlight" id="elegirnos">
+    <section class="section highlight" id="elegirnos" data-reveal>
       <div class="section-heading">
         <p class="eyebrow">Por que elegirnos</p>
         <h2>Una operacion preparada para crecer con tu negocio</h2>
@@ -91,7 +99,7 @@
       </div>
     </section>
 
-    <section class="section contact" id="contacto">
+    <section class="section contact" id="contacto" data-reveal>
       <div class="section-heading">
         <p class="eyebrow">Contacto</p>
         <h2>Solicita informacion comercial</h2>
@@ -121,10 +129,37 @@
   <script>
     const menuButton = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const header = document.querySelector('.site-header');
+    const revealItems = document.querySelectorAll('[data-reveal]');
+    const cards = document.querySelectorAll('.interactive-card');
 
     menuButton.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('is-open');
       menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 24);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.18 });
+
+    revealItems.forEach((item) => observer.observe(item));
+
+    cards.forEach((card) => {
+      card.addEventListener('mousemove', (event) => {
+        const rect = card.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        card.style.setProperty('--mx', `${x}px`);
+        card.style.setProperty('--my', `${y}px`);
+      });
     });
   </script>
 </body>

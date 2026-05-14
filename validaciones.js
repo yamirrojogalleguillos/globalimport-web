@@ -4,6 +4,8 @@ const successText = document.getElementById('successText');
 const contadorReferencia = document.getElementById('contadorReferencia');
 const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
+const header = document.querySelector('.site-header');
+const revealItems = document.querySelectorAll('[data-reveal]');
 
 const fields = {
   nombre: document.getElementById('nombre'),
@@ -410,3 +412,17 @@ menuButton.addEventListener('click', () => {
   const isOpen = navLinks.classList.toggle('is-open');
   menuButton.setAttribute('aria-expanded', String(isOpen));
 });
+
+window.addEventListener('scroll', () => {
+  header.classList.toggle('is-scrolled', window.scrollY > 24);
+});
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+revealItems.forEach((item) => revealObserver.observe(item));

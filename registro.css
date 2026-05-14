@@ -1,12 +1,31 @@
 .register-page {
+  position: relative;
   width: min(820px, calc(100% - 32px));
   margin: 0 auto;
   padding: 54px 0 90px;
 }
 
+.register-page::before {
+  position: fixed;
+  inset: 72px 0 auto;
+  z-index: -1;
+  height: 330px;
+  content: "";
+  background:
+    linear-gradient(135deg, rgba(17, 199, 234, 0.22), rgba(122, 201, 67, 0.14)),
+    url("assets/images/import-banner.svg") center / cover no-repeat;
+  opacity: 0.34;
+}
+
 .register-intro {
   margin-bottom: 32px;
+  padding: 28px;
   text-align: center;
+  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(14px) saturate(1.28);
 }
 
 .register-intro h1 {
@@ -26,16 +45,37 @@
 }
 
 .form-section {
+  position: relative;
+  overflow: hidden;
   margin: 0;
   padding: 26px;
-  background: #ffffff;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(237, 251, 255, 0.88));
   border: 1px solid var(--color-line);
   border-radius: 8px;
-  box-shadow: 0 12px 28px rgba(19, 32, 44, 0.08);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(12px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.form-section::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 38px;
+  content: "";
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), transparent);
+  pointer-events: none;
+}
+
+.form-section:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 156, 196, 0.55);
+  box-shadow: 0 24px 48px rgba(0, 119, 164, 0.18);
 }
 
 .form-section:nth-child(even) {
-  background: var(--color-bg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(229, 249, 255, 0.92));
 }
 
 .form-section legend {
@@ -84,8 +124,9 @@ textarea {
   border-radius: 8px;
   padding: 12px 13px;
   color: var(--color-ink);
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.86);
   font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 textarea {
@@ -97,7 +138,8 @@ select:focus,
 textarea:focus {
   outline: 3px solid rgba(15, 118, 110, 0.18);
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.08);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(0, 156, 196, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .campo-error {
@@ -128,9 +170,10 @@ textarea:focus {
 .choices-block {
   margin-bottom: 20px;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.76);
   border: 1px solid var(--color-line);
   border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.68);
 }
 
 .choices-block label,
@@ -204,9 +247,24 @@ textarea:focus {
   padding: 38px;
   margin-bottom: 28px;
   text-align: center;
-  background: #ecfdf3;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(222, 255, 238, 0.9));
   border: 1px solid #abefc6;
   border-radius: 8px;
+  box-shadow: var(--shadow-card);
+}
+
+.register-intro[data-reveal],
+.form-section[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.register-intro[data-reveal].is-visible,
+.form-section[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .success-message h2 {
