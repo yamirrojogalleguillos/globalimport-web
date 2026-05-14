@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Banner de comercio internacional</title>
+  <desc id="desc">Contenedores, cajas y rutas comerciales para GlobalImport S.A.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#dff3f5"/>
+      <stop offset="1" stop-color="#f7fbfc"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" x2="1">
+      <stop offset="0" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#12333f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#sky)"/>
+  <path d="M0 502c142-48 250-54 375-20 136 37 278 52 427 6 145-44 260-50 398 9v263H0Z" fill="url(#sea)"/>
+  <g opacity="0.35" fill="none" stroke="#0f766e" stroke-width="3">
+    <path d="M146 142c132 76 253 76 362 0s230-76 362 0"/>
+    <path d="M210 214c98 54 189 54 270 0s172-54 270 0"/>
+  </g>
+  <g transform="translate(160 368)">
+    <rect x="0" y="72" width="300" height="98" rx="8" fill="#17202a"/>
+    <rect x="28" y="18" width="74" height="64" rx="5" fill="#c9872b"/>
+    <rect x="112" y="0" width="74" height="82" rx="5" fill="#0f766e"/>
+    <rect x="196" y="34" width="74" height="48" rx="5" fill="#ffffff"/>
+    <circle cx="70" cy="180" r="20" fill="#ffffff"/>
+    <circle cx="230" cy="180" r="20" fill="#ffffff"/>
+  </g>
+  <g transform="translate(615 295)">
+    <rect x="0" y="92" width="320" height="170" rx="10" fill="#ffffff"/>
+    <rect x="28" y="118" width="78" height="44" rx="4" fill="#0f766e"/>
+    <rect x="122" y="118" width="78" height="44" rx="4" fill="#c9872b"/>
+    <rect x="216" y="118" width="78" height="44" rx="4" fill="#17202a"/>
+    <rect x="28" y="178" width="78" height="44" rx="4" fill="#17202a"/>
+    <rect x="122" y="178" width="78" height="44" rx="4" fill="#0f766e"/>
+    <rect x="216" y="178" width="78" height="44" rx="4" fill="#c9872b"/>
+    <path d="M58 92V52h210v40" fill="none" stroke="#17202a" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <g fill="#17202a">
+    <circle cx="969" cy="172" r="8"/>
+    <circle cx="1008" cy="210" r="5"/>
+    <circle cx="914" cy="238" r="6"/>
+  </g>
+</svg>

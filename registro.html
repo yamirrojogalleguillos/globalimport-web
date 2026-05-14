@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro | GlobalImport S.A.</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="registro.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegacion principal">
+      <a class="brand" href="index.html#inicio" aria-label="GlobalImport inicio">
+        <span class="brand-mark">GI</span>
+        <span>GlobalImport S.A.</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html#inicio">Inicio</a></li>
+        <li><a href="index.html#servicios">Servicios</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+        <li><a class="nav-register" href="registro.html">Registro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="register-page">
+    <section class="register-intro">
+      <p class="eyebrow">Alta de usuario</p>
+      <h1>Registro comercial</h1>
+      <p>Completa tus datos para operar con GlobalImport S.A. y recibir informacion sobre productos, pedidos y novedades.</p>
+    </section>
+
+    <section class="success-message" id="successMessage" hidden>
+      <h2>Registro completado</h2>
+      <p id="successText"></p>
+      <a class="button primary" href="index.html">Volver al inicio</a>
+    </section>
+
+    <form class="register-form" id="registroForm" novalidate>
+      <fieldset class="form-section">
+        <legend>Datos personales</legend>
+        <div class="form-grid">
+          <div class="field">
+            <label for="nombre">Nombre completo <span>*</span></label>
+            <input type="text" id="nombre" name="nombre" required>
+            <p class="error-message" id="error-nombre"></p>
+          </div>
+          <div class="field">
+            <label for="fechaNacimiento">Fecha de nacimiento <span>*</span></label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+            <p class="error-message" id="error-fechaNacimiento"></p>
+          </div>
+          <div class="field">
+            <label for="rut">Rut / Documento <span>*</span></label>
+            <input type="text" id="rut" name="rut" placeholder="Ej: 12345678-5" required>
+            <p class="error-message" id="error-rut"></p>
+          </div>
+          <div class="field">
+            <label for="genero">Genero <span>*</span></label>
+            <select id="genero" name="genero" required>
+              <option value="">Seleccionar</option>
+              <option>Masculino</option>
+              <option>Femenino</option>
+              <option>No binario</option>
+              <option>Prefiero no decir</option>
+            </select>
+            <p class="error-message" id="error-genero"></p>
+          </div>
+          <div class="field">
+            <label for="nacionalidad">Nacionalidad <span>*</span></label>
+            <select id="nacionalidad" name="nacionalidad" required>
+              <option value="">Seleccionar</option>
+              <option>Argentina</option>
+              <option>Bolivia</option>
+              <option>Brasil</option>
+              <option>Chile</option>
+              <option>Colombia</option>
+              <option>Mexico</option>
+              <option>Peru</option>
+              <option>Uruguay</option>
+            </select>
+            <p class="error-message" id="error-nacionalidad"></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend>Datos de contacto y acceso</legend>
+        <div class="form-grid">
+          <div class="field">
+            <label for="email">Correo electronico <span>*</span></label>
+            <input type="email" id="email" name="email" required>
+            <p class="error-message" id="error-email"></p>
+          </div>
+          <div class="field">
+            <label for="confirmarEmail">Confirmar correo electronico <span>*</span></label>
+            <input type="email" id="confirmarEmail" name="confirmarEmail" required>
+            <p class="error-message" id="error-confirmarEmail"></p>
+          </div>
+          <div class="field">
+            <label for="password">Contrasena <span>*</span></label>
+            <input type="password" id="password" name="password" required>
+            <div class="password-strength" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <p class="error-message" id="error-password"></p>
+          </div>
+          <div class="field">
+            <label for="confirmarPassword">Confirmar contrasena <span>*</span></label>
+            <input type="password" id="confirmarPassword" name="confirmarPassword" required>
+            <p class="error-message" id="error-confirmarPassword"></p>
+          </div>
+          <div class="field">
+            <label for="telefono">Telefono <span>*</span></label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+56 9 1234 5678" required>
+            <p class="error-message" id="error-telefono"></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend>Direccion de entrega</legend>
+        <div class="form-grid">
+          <div class="field">
+            <label for="pais">Pais <span>*</span></label>
+            <select id="pais" name="pais" required>
+              <option value="">Seleccionar</option>
+              <option>Argentina</option>
+              <option>Chile</option>
+              <option>Brasil</option>
+              <option>Uruguay</option>
+              <option>Peru</option>
+            </select>
+            <p class="error-message" id="error-pais"></p>
+          </div>
+          <div class="field">
+            <label for="provincia">Provincia / Estado <span>*</span></label>
+            <input type="text" id="provincia" name="provincia" required>
+            <p class="error-message" id="error-provincia"></p>
+          </div>
+          <div class="field">
+            <label for="ciudad">Ciudad <span>*</span></label>
+            <input type="text" id="ciudad" name="ciudad" required>
+            <p class="error-message" id="error-ciudad"></p>
+          </div>
+          <div class="field">
+            <label for="calle">Calle y numero <span>*</span></label>
+            <input type="text" id="calle" name="calle" required>
+            <p class="error-message" id="error-calle"></p>
+          </div>
+          <div class="field">
+            <label for="codigoPostal">Codigo postal <span>*</span></label>
+            <input type="text" id="codigoPostal" name="codigoPostal" required>
+            <p class="error-message" id="error-codigoPostal"></p>
+          </div>
+          <div class="field">
+            <label for="piso">Piso y departamento</label>
+            <input type="text" id="piso" name="piso">
+          </div>
+          <div class="field full">
+            <label for="referencia">Referencia o instrucciones adicionales</label>
+            <textarea id="referencia" name="referencia" rows="4" maxlength="200"></textarea>
+            <p class="counter"><span id="contadorReferencia">0</span>/200 caracteres</p>
+            <p class="error-message" id="error-referencia"></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend>Preferencias y terminos</legend>
+        <div class="choices-block">
+          <p>Categorias de interes <span>*</span></p>
+          <label><input type="checkbox" name="categorias" value="Electronica"> Electronica</label>
+          <label><input type="checkbox" name="categorias" value="Indumentaria"> Indumentaria</label>
+          <label><input type="checkbox" name="categorias" value="Hogar"> Hogar</label>
+          <label><input type="checkbox" name="categorias" value="Otros"> Otros</label>
+          <p class="error-message" id="error-categorias"></p>
+        </div>
+
+        <div class="choices-block">
+          <p>Tipo de cliente <span>*</span></p>
+          <label><input type="radio" name="tipoCliente" value="Consumidor final"> Consumidor final</label>
+          <label><input type="radio" name="tipoCliente" value="Revendedor"> Revendedor</label>
+          <label><input type="radio" name="tipoCliente" value="Empresa"> Empresa</label>
+          <p class="error-message" id="error-tipoCliente"></p>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="comoConociste">Como nos conociste?</label>
+            <select id="comoConociste" name="comoConociste">
+              <option value="">Seleccionar</option>
+              <option>Redes sociales</option>
+              <option>Recomendacion</option>
+              <option>Busqueda web</option>
+              <option>Publicidad</option>
+              <option>Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="legal-list">
+          <label><input type="checkbox" id="newsletter" name="newsletter"> Quiero suscribirme al newsletter.</label>
+          <label><input type="checkbox" id="terminos" name="terminos" required> Acepto los <a href="#">Terminos y Condiciones</a>. <span>*</span></label>
+          <p class="error-message" id="error-terminos"></p>
+          <label><input type="checkbox" id="privacidad" name="privacidad" required> Acepto la Politica de Privacidad. <span>*</span></label>
+          <p class="error-message" id="error-privacidad"></p>
+        </div>
+      </fieldset>
+
+      <div class="form-actions">
+        <button class="button primary" type="submit">Registrarme</button>
+        <button class="button secondary" type="reset">Limpiar formulario</button>
+        <a href="#">Ya tengo cuenta, iniciar sesion</a>
+      </div>
+    </form>
+  </main>
+
+  <script src="validaciones.js"></script>
+</body>
+</html>

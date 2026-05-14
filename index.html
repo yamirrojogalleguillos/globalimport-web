@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlobalImport S.A. | Comercio internacional</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegacion principal">
+      <a class="brand" href="#inicio" aria-label="GlobalImport inicio">
+        <span class="brand-mark">GI</span>
+        <span>GlobalImport S.A.</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a class="nav-register" href="registro.html">Registro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-overlay">
+        <p class="eyebrow">Importacion y distribucion para empresas</p>
+        <h1>GlobalImport S.A.</h1>
+        <p>Conectamos tu negocio con productos internacionales, gestion logistica y abastecimiento confiable.</p>
+        <a class="button primary" href="#servicios">Conocer servicios</a>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="section-heading">
+        <p class="eyebrow">Servicios</p>
+        <h2>Soluciones de importacion para distintos rubros</h2>
+        <p>Trabajamos con categorias clave para comercios, revendedores y empresas que buscan variedad, cumplimiento y respaldo.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card">
+          <img src="assets/images/import-banner.svg" alt="" class="service-icon">
+          <h3>Importacion de Electronica</h3>
+          <p>Gestionamos productos tecnologicos, accesorios y dispositivos para abastecer tiendas y empresas. Priorizamos proveedores confiables y disponibilidad comercial.</p>
+        </article>
+        <article class="service-card">
+          <img src="assets/images/import-banner.svg" alt="" class="service-icon">
+          <h3>Indumentaria y Accesorios</h3>
+          <p>Ofrecemos soluciones para negocios de moda, temporada y venta online. El catalogo se adapta a tendencias y necesidades de reposicion.</p>
+        </article>
+        <article class="service-card">
+          <img src="assets/images/import-banner.svg" alt="" class="service-icon">
+          <h3>Articulos del Hogar</h3>
+          <p>Importamos productos funcionales para hogar, bazar y consumo cotidiano. Son opciones pensadas para ampliar el surtido de comercios minoristas.</p>
+        </article>
+        <article class="service-card">
+          <img src="assets/images/import-banner.svg" alt="" class="service-icon">
+          <h3>Logistica y Distribucion</h3>
+          <p>Coordinamos entregas, seguimiento de pedidos y distribucion mayorista. Nuestro objetivo es simplificar la operacion comercial del cliente.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section highlight" id="elegirnos">
+      <div class="section-heading">
+        <p class="eyebrow">Por que elegirnos</p>
+        <h2>Una operacion preparada para crecer con tu negocio</h2>
+      </div>
+      <div class="benefits-grid">
+        <div>
+          <strong>01</strong>
+          <h3>Confianza</h3>
+          <p>Comunicacion clara, datos comerciales transparentes y seguimiento de cada consulta.</p>
+        </div>
+        <div>
+          <strong>02</strong>
+          <h3>Experiencia</h3>
+          <p>Conocimiento de categorias de alta rotacion y necesidades de comercios locales.</p>
+        </div>
+        <div>
+          <strong>03</strong>
+          <h3>Variedad</h3>
+          <p>Productos de electronica, indumentaria y hogar en una propuesta integrada.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto">
+      <div class="section-heading">
+        <p class="eyebrow">Contacto</p>
+        <h2>Solicita informacion comercial</h2>
+        <p>Comunicate con nuestro equipo para recibir asesoramiento sobre productos, volumenes y disponibilidad.</p>
+      </div>
+      <div class="contact-box">
+        <p><strong>Email:</strong> ventas@globalimport.com</p>
+        <p><strong>Telefono:</strong> +54 11 4567-8900</p>
+        <p><strong>Horario:</strong> Lunes a viernes, 9:00 a 18:00</p>
+        <a class="button secondary" href="registro.html">Crear cuenta comercial</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <p>&copy; 2026 GlobalImport S.A. Todos los derechos reservados.</p>
+      <p>ventas@globalimport.com | +54 11 4567-8900</p>
+    </div>
+    <div class="social-links" aria-label="Redes sociales">
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('is-open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+  </script>
+</body>
+</html>
