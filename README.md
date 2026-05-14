@@ -12,14 +12,14 @@ El proyecto se desarrolla en tres etapas:
 
 ```text
 globalimport-web/
-├── index.html
-├── registro.html
-├── style.css
-├── registro.css
-├── validaciones.js
-└── assets/
-    └── images/
-        └── import-banner.svg
++-- index.html
++-- registro.html
++-- style.css
++-- registro.css
++-- validaciones.js
++-- assets/
+    +-- images/
+        +-- import-banner.svg
 ```
 
 ## Como abrir el sitio
